@@ -2,9 +2,6 @@
 
 # Simple email alert system using Postfix for TX2 Trainning
 
-# Set env variables
-source ~/.bashrc
-
 subject="TX2 OpenCV Haart Training Alert"
 message=`tail -n 20 $TX2_LOG`
 
