@@ -11,5 +11,5 @@ process=`ps -e | grep opencv`
 if ((`wc -w <<< $process` == 0)); then
     echo "Alert!!!"
     echo $message
-    mail -s $subject $TX2_ALERT_ACCOUNT <<< $message
+    mail -s "$subject" $TX2_ALERT_ACCOUNT <<< $message
 fi
