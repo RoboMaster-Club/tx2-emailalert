@@ -14,13 +14,16 @@ if [[ $res != 0 ]]; then
     exit $res
 fi
 echo "export TX2_ALERT_INSTALL_DIR=`pwd`" >> ~/.bashrc
+echo "export TX2_ALERT_INSTALL_DIR=`pwd`" >> ~/.alertprofile
 
 read -p "Please enter alert email account: " emailAccount
 echo "export TX2_ALERT_ACCOUNT=$emailAccount" >> ~/.bashrc
+echo "export TX2_ALERT_ACCOUNT=$emailAccount" >> ~/.alertprofile
 
 read -p "Please select log file (default: /home/nvidia/cascade-classifier/nohup.out): " logFile
 logFile=${logFile:-/home/nvidia/cascade-classifier/nohup.out}
 echo "export TX2_LOG=$logFile" >> ~/.bashrc
+echo "export TX2_LOG=$logFile" >> ~/.alertprofile
 
 source ~/.bashrc
 
