@@ -7,6 +7,9 @@ message=`tail -n 20 $TX2_LOG`
 
 process=`ps -e | grep opencv`
 
-if [[`wc -l <<< $process` -ne 1]]; then
+# Compare word count
+if ((`wc -w <<< $process` == 0)); then
+    echo "Alert!!!"
+    echo $message
     mail -s $subject $TX2_ALERT_ACCOUNT <<< $message
 fi
