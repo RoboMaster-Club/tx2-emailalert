@@ -8,6 +8,6 @@ bash ./stop.sh
 # Add to scheduler
 crontab -l > tmp
 echo "# Used by TX2 Email Alert #" >> tmp
-echo "00 * * * * bash ./emailAlert.sh" >> tmp
+echo "00 * * * * bash $TX2_ALERT_INSTALL_DIR/emailAlert.sh" >> tmp
 crontab tmp
 rm tmp

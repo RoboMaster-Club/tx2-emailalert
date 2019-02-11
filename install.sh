@@ -7,11 +7,22 @@ echo "Installing mail service..."
 sudo apt-get install mailutils
 
 # Set env variabbles
+bash ./test.sh 2> /dev/null
+res=$?
+if [[ $res != 0 ]]; then
+    echo "Please install in the repo directory"
+    exit $res
+fi
+echo "export TX2_ALERT_INSTALL_DIR=`pwd`" >> ~/.bashrc
+
 read -p "Please enter alert email account: " emailAccount
 echo "export TX2_ALERT_ACCOUNT=$emailAccount" >> ~/.bashrc
 
 read -p "Please select log file (default: /home/nvidia/cascade-classifier/nohup.out): " logFile
+logFile=${logFile:-/home/nvidia/cascade-classifier/nohup.out}
 echo "export TX2_LOG=$logFile" >> ~/.bashrc
+
+source ~/.bashrc
 
 # Test sending
 echo "Sending test email..."
